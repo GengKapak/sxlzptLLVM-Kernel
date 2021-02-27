@@ -10,21 +10,19 @@
 #    m4 gcc libtool zlib1g-dev flex bison libssl-dev
 
 # Clone toolchain
-git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-10.0.0_r41 --depth=1 stock
-git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-10.0.0_r41 --depth=1 stock_32
-#git clone https://github.com/arter97/arm64-gcc.git --depth=1 gcc64
-#git clone https://github.com/arter97/arm32-gcc.git --depth=1 gcc32
+if [ ! -d toolchain ]; then
+    git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-10.0.0_r41 --depth=1 stock
+    git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-10.0.0_r41 --depth=1 stock_32
+fi
 
 # Clone AnyKernel3
-git clone https://github.com/MumetNgoding/AnyKernel3.git -b master
+if [ ! -d AnyKernel3 ]; then
+    git clone -b AOSP-onclite https://github.com/sxlmnwb/AnyKernel3
+fi
 
-#Download Clang
+#Download clang
 if [ ! -d clang ]; then
-git clone https://github.com/GengKapak/GengKapak-clang --depth=1 kapak-clang
-#    git clone https://github.com/silont-project/silont-clang.git --depth=1
-#    git clone https://github.com/arter97/arm64-gcc.git --depth=1
-#    git clone https://github.com/arter97/arm32-gcc.git --depth=1
-#    git clone https://github.com/MumetNgoding/proton-clang.git --depth=1
+    git clone -b r412851 https://github.com/sxlmnwb/LLVM-Prebuilts --depth=1
 fi
 
 # Download libufdt
@@ -34,3 +32,5 @@ if [ ! -d libufdt ]; then
     tar xvzf utils.tar.gz -C libufdt
     rm utils.tar.gz
 fi
+
+# End
