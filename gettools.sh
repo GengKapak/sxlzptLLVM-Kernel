@@ -9,10 +9,10 @@
 #    zip curl make automake autogen autoconf autotools-dev libtool shtool python \
 #    m4 gcc libtool zlib1g-dev flex bison libssl-dev
 
-# Clone toolchain
-if [ ! -d toolchain ]; then
-    git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9 -b android-10.0.0_r41 --depth=1 stock
-    git clone https://android.googlesource.com/platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9 -b android-10.0.0_r41 --depth=1 stock_32
+# Clone GCC
+if [ ! -d GCC ]; then
+    git clone -b 10/r41 https://github.com/sxlmnwb/aarch64-linux-android-4.9 --depth=1 arm64
+    git clone -b 10/r41 https://github.com/sxlmnwb/arm-linux-androideabi-4.9 --depth=1 arm
 fi
 
 # Clone AnyKernel3
